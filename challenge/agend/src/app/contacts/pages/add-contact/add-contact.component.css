@@ -1,0 +1,6 @@
+.backArrow:hover{
+  background-color: blueviolet;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}

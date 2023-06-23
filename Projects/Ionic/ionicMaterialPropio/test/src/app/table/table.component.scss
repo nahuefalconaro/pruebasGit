@@ -1,0 +1,85 @@
+.example-container {
+  width: 100%;
+  height: calc(100vh - 100px);
+  overflow: auto;
+}
+
+table {
+  width: 800px;
+}
+
+td {
+  color: black !important;
+  font-weight: 300 !important;
+}
+td.mat-cell{
+  border: none;
+  border-right: 1px solid black;
+}
+td.mat-cell{
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+}
+.mat-cell {
+  text-align: center !important;
+  white-space: nowrap;
+}
+.mat-header-row {
+  background-color: rgb(196, 196, 196) !important;
+  border-bottom: 2px solid black !important;
+}
+.mat-header-row:first-child {
+  border-radius: 50px !important;
+}
+.mat-header-cell {
+  color: rgb(56, 56, 56) !important;
+  white-space: nowrap;
+  text-align: center !important;
+  padding-right: 10px !important;
+}
+.mat-row:nth-child(even) {
+  background-color: rgb(232, 235, 237) !important;
+}
+.mat-row {
+  background-color: rgb(255, 255, 255) !important;
+}
+.contenedor {
+  padding-left: 100px !important;
+  padding-right: 100px !important;
+}
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #454545 #fdfcfc;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #fdfcfc;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #454545;
+  border: 5px dotted #454545;
+}
+
+.myBtn {
+  background-color: rgb(234, 233, 233) !important;
+  height: 40px !important;
+  width: 80px !important;
+
+}
+.myBtn span{
+  padding: 0 !important;
+  color: black;
+}
+
+ion-icon{
+  color: red;
+}

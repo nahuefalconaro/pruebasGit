@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <ion-grid>
+    <ion-row class="ion-justify-content-start">
+    <ion-col size="2">
+      <h1>Menu</h1>
+    </ion-col>
+      <ion-col size="10">
+        <button color="primary" (click)="login()" mat-raised-button>
+          <mat-icon>home</mat-icon>
+          Login
+        </button>
+        <button color="primary" (click)="logout()" mat-raised-button>
+          <mat-icon>home</mat-icon>
+          Logout
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <input type="text" name="test" [(ngModel)]="test">
+  <p>{{test}} con ngModel</p>
+
+  <button (click)="emitir()">botn paara emitir</button>
+  <p>{{complejo}} sin ngModel</p>
+
+</mat-toolbar>

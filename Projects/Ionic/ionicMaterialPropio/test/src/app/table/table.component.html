@@ -1,0 +1,113 @@
+<div class="contenedor">
+  <div
+    class="example-container mat-elevation-z8"
+    style="
+      border-top-left-radius: 15px !important;
+      border-bottom-left-radius: 13px !important;
+    "
+  >
+    <table mat-table [dataSource]="dataSource2">
+      <ng-container sticky matColumnDef="commercialProductName">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ initColumns[0].name }}
+        </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left !important;">
+          {{ element[initColumns[0].value!] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="commercialProductDesc">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ initColumns[1].name }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element[initColumns[1].value!]">{{
+            element[initColumns[1].value!]
+          }}</span>
+          <span *ngIf="!element[initColumns[1].value!]">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="vehiAgeUpTo">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ initColumns[2].name }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element[initColumns[2].value!] }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="prizeAmount">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ initColumns[3].name }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{
+            element[initColumns[3].value!] | currency : "" : "symbol" : "0.2-2"
+          }}
+        </td>
+      </ng-container>
+
+      <ng-container
+        *ngFor="let item of initColumns | slice : 4; let i= index;"
+        [matColumnDef]="item.value!"
+      >
+        <th mat-header-cell *matHeaderCellDef>
+          {{ item.name }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div [ngSwitch]="coverageIncluded(item.value2.coverageId, element.commercialProductCode)"
+          class="cell-data">
+          <ion-icon name="checkmark-outline" size="large" style="color: green;"
+            *ngSwitchCase="'S'"></ion-icon>
+          <ion-icon name="close" size="large" style="color: red;"
+            *ngSwitchCase="'N'"></ion-icon>
+          <div *ngSwitchCase="'I'">
+            {{getSumInsureAmn(item.value2.coverageId, element.commercialProductCode) |
+            currency:'':'symbol':'0.2-2' }}
+          </div>
+        </div>
+
+        </td>
+      </ng-container>
+      <!-- <ion-row *ngFor="let cov of coverages; let i= index;">
+        <ion-col size="2"
+          [ngClass]="(i % 2 !== 0) ? 'row-odd' : ''"
+          class="cell-coverage">
+          <span>{{cov.coverageTitle}}</span>
+          <ion-icon *ngIf="cov.coverageDesc"
+            name="help-circle-outline"
+            class="tooltip"
+            (click)="showTooltipMessage(cov.coverageDesc)"></ion-icon>
+        </ion-col>
+        <ion-col *ngFor="let prod of comparatives"
+          class="col-data"
+          [ngClass]="(i % 2 !== 0) ? 'row-odd' : ''">
+          <div [ngSwitch]="coverageIncluded(cov.coverageId, prod.commercialProductCode)"
+            class="cell-data">
+            <ion-icon name="checkmark-circle"
+              *ngSwitchCase="'S'"></ion-icon>
+            <ion-icon name="close-circle"
+              *ngSwitchCase="'N'"></ion-icon>
+            <div *ngSwitchCase="'I'">
+              {{getSumInsureAmn(cov.coverageId, prod.commercialProductCode) |
+              currency:'':'symbol':'0.2-2' }}
+            </div>
+          </div>
+        </ion-col>
+      </ion-row> -->
+
+      <ng-container stickyEnd matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>Seleccionar Poliza</th>
+        <td mat-cell *matCellDef="let j = index">
+          <button mat-raised-button class="myBtn" color="warn">
+            Elegir
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

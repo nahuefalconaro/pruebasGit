@@ -1,0 +1,81 @@
+<h1>Form Reactivo!</h1>
+<a routerLink="view-contacts-reactive" style="color: white;"><i class="pi pi-arrow-left mr-3" style="font-size: 1.5rem"></i></a>Contacto
+<hr />
+<form (ngSubmit)="addContact()" autocomplete="off" [formGroup]="formulario">
+  <div class="p-fluid grid mt-5">
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <input type="text" id="nombre" pInputText formControlName="nombre" />
+        <label for="nombre">Nombre</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <input type="text" id="apellido" pInputText formControlName="apellido"/>
+        <label for="apellido">Apellido</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <p-dropdown
+          inputId="countries"
+          [autoDisplayFirst]="!isAddAction"
+          [options]="countries"
+          optionLabel="name"
+          formControlName="pais"
+        ></p-dropdown>
+        <label for="countries">Countries</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <input type="text" id="nombre" formControlName="ciudad" pInputText />
+        <label for="ciudad">Ciudad</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <p-dropdown
+          inputId="areas"
+          [autoDisplayFirst]="!isAddAction"
+          [options]="areas"
+          optionLabel="name"
+          formControlName="area"
+        ></p-dropdown>
+        <label for="areas">Areas</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <input type="text" id="direccion" formControlName="direccion" pInputText />
+        <label for="direccion">Direccion</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <input type="text" id="telefono" formControlName="telefono" pInputText />
+        <label for="telefono">Telefono</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <input type="email" id="email" formControlName="email" pInputText />
+        <label for="email">E-mail</label>
+      </span>
+    </div>
+    <div class="p-field-checkbox col-12 md:col-9 flex align-items-center">
+      <p-checkbox
+        [binary]="true"
+        inputId="internalContact"
+        formControlName="contactoInterno"
+      ></p-checkbox>
+      <label for="internalContact" class="ml-2">Internal Contact</label>
+    </div>
+    <div class="field col-12 md:col-3" *ngIf="isViewContact? false:true">
+      <button *ngIf="!isAddAction" [disabled]="formulario.invalid" type="submit" pButton pRipple label="Guardar" class="p-mr-2"></button>
+      <button *ngIf="isAddAction" [disabled]="formulario.invalid" type="submit" pButton pRipple label="Modificar" class="p-mr-2"></button>
+      <p-toast></p-toast>
+    </div>
+  </div>
+
+</form>

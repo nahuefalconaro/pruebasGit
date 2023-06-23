@@ -1,0 +1,67 @@
+<ion-content class="ion-margin">
+  <h1>Tabla <small>comparativa</small></h1>
+  <hr />
+  <ion-grid class="ion-margin table" id="tablaPdf">
+    <ion-row class="header">
+      <ion-col size="2" class="colDemas"> - </ion-col>
+      <ion-col
+        class="seleccionador"
+        *ngFor="let item of headerColumn; index as i"
+      >
+       <p>{{ item.name }}</p>
+        <Button class="btnElegir" (click)="test(item.quoteId)">Elegir</Button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="sideTable" size="2"><p>Descripcion</p></ion-col>
+      <ion-col class="bodyTable" *ngFor="let student of data; index as i">
+        <span
+        *ngIf="student.commercialProductDesc !== null; else elseContent"
+          >{{ student.commercialProductDesc }}</span
+        >
+        <ng-template #elseContent>-</ng-template>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="sideTable" size="2"><p>Antiguedad</p></ion-col>
+      <ion-col class="bodyTable" *ngFor="let student of data; index as i">{{
+        student.vehiAgeUpTo
+      }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="sideTable" size="2"><p>Premio</p></ion-col>
+      <ion-col class="bodyTable" *ngFor="let student of data; index as i">{{
+        student.prizeAmount | currency : "" : "symbol" : "0.2-2"
+      }}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let c of coverage"
+      ><ion-col class="sideTable" size="2"><p>{{ c.coverageTitle }}</p></ion-col>
+      <ion-col *ngFor="let prod of data; index as i" class="bodyTable">
+        <div
+          [ngSwitch]="
+            coverageIncluded(c.coverageId, prod.commercialProductCode)
+          "
+          class="cell-data"
+        >
+          <ion-icon name="checkmark-outline" size="large" style="color: green;" *ngSwitchCase="'S'"></ion-icon>
+          <ion-icon name="close" size="large" style="color: red;" *ngSwitchCase="'N'"></ion-icon>
+          <div *ngSwitchCase="'I'">
+            {{
+              getSumInsureAmn(c.coverageId, prod.commercialProductCode)
+                | currency : "" : "symbol" : "0.2-2"
+            }}
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-button  color="primary" size="small" slot="end">
+    Download PDF
+  </ion-button>
+  <ion-item lines="none">
+    <button ion-button color="primary" size="small" (click)="print()" slot="end">
+      Material Design Table
+    </button>
+  </ion-item>
+
+</ion-content>

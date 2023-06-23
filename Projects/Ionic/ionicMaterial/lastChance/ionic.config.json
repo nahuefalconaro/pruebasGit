@@ -1,0 +1,7 @@
+{
+  "name": "lastChance",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

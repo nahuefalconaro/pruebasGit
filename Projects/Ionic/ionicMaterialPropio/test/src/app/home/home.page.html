@@ -1,0 +1,78 @@
+<!-- <ion-content>
+ <ion-grid>
+  <ion-row>
+    <ion-col size="2">a</ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+ </ion-grid>
+</ion-content> -->
+
+<!--
+<div class="armadoTabla">
+  <div class="table-wrap">
+    <div class="sidebar">
+        <div><p>*</p></div>
+        <div><p>Descripcion</p> </div>
+        <div><p>Antigüedad</p></div>
+        <div><p>Premio</p></div>
+        <div *ngFor="let prod of coverage">
+          <p>{{prod.coverageTitle}}</p>
+        </div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr >
+            <th *ngFor="let prod of data">{{prod.commercialProductName}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+            <td *ngFor="let prod of data">{{prod.commercialProductDesc }}</td>
+          </tr>
+          <tr >
+            <td *ngFor="let prod of data">{{prod.vehiAgeUpTo }} a;os</td>
+          </tr>
+          <tr >
+            <td *ngFor="let prod of data">{{prod.prizeAmount | currency:'':'symbol':'0.2-2' }}</td>
+          </tr>
+          <tr *ngFor="let prod of coverage">
+            <td *ngFor="let prod of data"> {{prod.coverages[0].coverageId}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+
+  <!-- <ng-container matColumnDef="commercialProductName">
+    <th mat-header-cell *matHeaderCellDef>Poliza</th>
+    <td mat-cell *matCellDef="let element">{{element.commercialProductName}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="commercialProductDesc">
+    <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+    <td mat-cell *matCellDef="let element">{{element.commercialProductDesc}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="vehiAgeUpTo">
+    <th mat-header-cell *matHeaderCellDef>Antigüedad</th>
+    <td mat-cell *matCellDef="let element">{{element.vehiAgeUpTo}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="prizeAmount">
+    <th mat-header-cell *matHeaderCellDef>Premio</th>
+    <td mat-cell *matCellDef="let element">{{element.prizeAmount}}</td>
+  </ng-container> -->
+
+<header>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, totam dignissimos cum deleniti quisquam necessitatibus nemo id dolorum dicta sit voluptatem saepe voluptatibus eligendi velit officia porro? Sit, ab nobis.
+</header>
+<app-table></app-table>
+<footer>
+  <button *ngFor="let i of ['Descargar', 'Compartir', 'Volver']">{{i}}</button>
+</footer>

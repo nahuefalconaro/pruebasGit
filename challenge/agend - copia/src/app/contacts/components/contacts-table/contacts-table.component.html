@@ -1,0 +1,57 @@
+<p-table [value]="contacts" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Documento</th>
+      <th>País</th>
+      <th>Ciudad</th>
+      <th>Fecha de Nacimiento</th>
+      <th>Contacto Interno</th>
+      <th>Área</th>
+      <th>Fecha de Ingreso</th>
+      <th>Dirección</th>
+      <th>Teléfono</th>
+      <th>E-mail</th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-contact>
+    <tr>
+      <td>{{ contact.nombre }}</td>
+      <td>{{ contact.apellido }}</td>
+      <td>{{ contact.documento | documentTransform }}</td>
+      <td>{{ contact.pais.name }}</td>
+      <td>{{ contact.ciudad }}</td>
+      <td>{{ contact.fechaNacimiento | date : "dd/MM/yyyy" }}</td>
+      <td>{{ contact.contactoInterno }}</td>
+      <td>{{ contact.area.name }}</td>
+      <td>{{ contact.fechaIngreso | date : "dd/MM/yyyy" }}</td>
+      <td>{{ contact.direccion }}</td>
+      <td>{{ contact.telefono }}</td>
+      <td>{{ contact.email }}</td>
+      <td [ngSwitch]="isReactive">
+        <i
+          class="pi pi-pencil"
+          [routerLink]="isReactive?['/edit-contact-reactive', contact.documento]:['/edit-contact', contact.documento]"
+        ></i>
+        <i
+          class="pi pi-search mx-2"
+          [routerLink]="isReactive?['/view-contact-reactive', contact.documento]: ['/view-contact', contact.documento]"
+        ></i>
+        <i
+          class="pi pi-trash"
+          icon="pi pi-trash"
+          (click)="delete(contact.documento)"
+          style="color: crimson"
+        ></i>
+        <p-confirmDialog
+          [style]="{ width: '50vw' }"
+          [baseZIndex]="10000"
+        ></p-confirmDialog>
+        <p-toast></p-toast>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+

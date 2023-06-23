@@ -1,0 +1,85 @@
+<h1>
+  <a routerLink="view-contacts" style="color: white;"><i class="pi pi-arrow-left mr-3" style="font-size: 1.5rem"></i></a>Contacto <small>{{contactoAdd.nombre +' '+contactoAdd.apellido}}</small></h1>
+  <hr />
+  <div class="p-fluid grid mt-5">
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <input type="text" id="nombre" pInputText [(ngModel)]="contactoAdd.nombre" required [disabled]="isViewContact? true:false"/>
+        <label for="nombre">Nombre</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <input type="text" id="apellido" pInputText [(ngModel)]="contactoAdd.apellido" required [disabled]="isViewContact? true:false"/>
+        <label for="apellido">Apellido</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <p-dropdown
+          inputId="countries"
+          [(ngModel)]="contactoAdd.pais"
+          [autoDisplayFirst]="!isAddAction"
+          [options]="countries"
+          optionLabel="name"
+          [required]="true"
+          [disabled]="isViewContact? true:false"
+        ></p-dropdown>
+        <label for="countries">Countries</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <input type="text" id="nombre" required pInputText [(ngModel)]="contactoAdd.ciudad" [disabled]="isViewContact? true:false"/>
+        <label for="ciudad">Ciudad</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <p-dropdown
+          inputId="areas"
+          [autoDisplayFirst]="!isAddAction"
+          [options]="areas"
+          optionLabel="name"
+          [(ngModel)]="contactoAdd.area"
+          [disabled]="isViewContact? true:false"
+        ></p-dropdown>
+        <label for="areas">Areas</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <input type="text" id="direccion" required pInputText [(ngModel)]="contactoAdd.direccion" [disabled]="isViewContact? true:false"/>
+        <label for="direccion">Direccion</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <input type="text" id="telefono" required pInputText [(ngModel)]="contactoAdd.telefono" [disabled]="isViewContact? true:false"/>
+        <label for="telefono">Telefono</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-3">
+      <span class="p-float-label">
+        <input type="email" id="email" email="true" required pInputText [(ngModel)]="contactoAdd.email" [disabled]="isViewContact? true:false"/>
+        <label for="email">E-mail</label>
+      </span>
+    </div>
+    <div class="p-field-checkbox col-12 md:col-9 flex align-items-center">
+      <p-checkbox
+        [binary]="true"
+        inputId="internalContact"
+        [(ngModel)]="contactoAdd.contactoInterno"
+        [disabled]="isViewContact? true:false"
+      ></p-checkbox>
+      <label for="internalContact" class="ml-2">Internal Contact</label>
+    </div>
+    <div class="field col-12 md:col-3" *ngIf="isViewContact? false:true">
+      <button *ngIf="!isAddAction" [disabled]="checkEmptyInputs()" type="button" pButton pRipple (click)="addContact()" label="Guardar" class="p-mr-2"></button>
+      <button *ngIf="isAddAction" [disabled]="checkEmptyInputs()" type="button" pButton pRipple (click)="addContact()" label="Modificar" class="p-mr-2"></button>
+      <p-toast></p-toast>
+    </div>
+  </div>
+
+
+

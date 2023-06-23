@@ -1,0 +1,142 @@
+<ion-button id="open-modal" fill="outline" color="danger" class="btnSelect"><p>Comparar propuestas</p></ ion-button>
+<ion-modal trigger="open-modal" class="example-modal">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()"
+            ><ion-icon icon="close" size="large"></ion-icon
+          ></ion-button>
+        </ion-buttons>
+        <ion-title>Coberturas</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h2 style="text-align: center;">Selecciona las coberturas por grupo!</h2>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="justify-center">
+            <ion-button>Cobertura Terceros completos</ion-button>
+          </ion-col>
+          <ion-col class="justify-center">
+            <ion-button>Cobertura Todo riesgo</ion-button>
+          </ion-col>
+          <ion-col class="justify-center">
+            <ion-button>Cobertura General</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h2 style="text-align: center;">Seleccion comparativa personalizada de hasta 9 elementos</h2>
+          </ion-col>
+        </ion-row>
+        <ion-row >
+          <ion-col>
+            <ion-list>
+              <ion-list-header>
+                <ion-label>Coberturas tipo: Activa</ion-label>
+              </ion-list-header>
+              <ion-item *ngFor="let item of coberturas?.activa; let i = index">
+                <ion-checkbox
+                  slot="start"
+                  [(ngModel)]="item.selected"
+                ></ion-checkbox>
+                <ion-label
+                  >{{item.name}} -
+                  <small
+                    >{{item.commercialProductDesc}} - {{item.prizeAmount | currency : "" :
+                    "symbol" : "0.2-2"}}</small
+                  ></ion-label
+                >
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col>
+            <ion-list>
+              <ion-list-header>
+                <ion-label>Coberturas tipo: Todo Auto</ion-label>
+              </ion-list-header>
+              <ion-item *ngFor="let item of coberturas?.todoAuto; let i = index">
+                <ion-checkbox
+                  slot="start"
+                  [(ngModel)]="item.selected"
+                ></ion-checkbox>
+                <ion-label
+                  >{{item.name}} -
+                  <small
+                    >{{item.commercialProductDesc}} - {{item.prizeAmount | currency : "" :
+                    "symbol" : "0.2-2"}}</small
+                  ></ion-label
+                >
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col>
+            <ion-list>
+              <ion-list-header>
+                <ion-label>Coberturas tipo: General</ion-label>
+              </ion-list-header>
+              <ion-item *ngFor="let item of coberturas?.rest; let i = index">
+                <ion-checkbox
+                  slot="start"
+                  [(ngModel)]="item.selected"
+                ></ion-checkbox>
+                <ion-label
+                  >
+                  <p>{{item.name}}</p>
+                  <ion-badge
+                    >{{item.commercialProductDesc}}</ion-badge
+                  ><ion-badge>{{item.prizeAmount | currency : "" :
+                    "symbol" : "0.2-2"}}</ion-badge></ion-label
+                >
+
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-button (click)="verTabla()" color="danger" expand="block"
+      >ver tabla</ion-button
+    >
+    </ion-content>
+  </ng-template>
+</ion-modal>
+{{mensaje}}
+<!-- <ion-button id="open-modal" fill="outline" color="danger" class="btnSelect"><p>Comparar propuestas</p></ion-button>
+<ion-modal trigger="open-modal">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()"
+            ><ion-icon icon="close" size="large"></ion-icon
+          ></ion-button>
+        </ion-buttons>
+        <ion-title>Polizas</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Seleccione hasta 9 polizas</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let item of campos; let i = index">
+          <ion-checkbox slot="start" [(ngModel)]="item.selected"></ion-checkbox>
+          <ion-label
+            >{{item.name}} -
+            <small
+              >{{item.quoteId}} - {{item.prizeAmount | currency : "" : "symbol"
+              : "0.2-2"}}</small
+            ></ion-label
+          >
+        </ion-item>
+      </ion-list>
+      <ion-button (click)="verTabla()" color="danger" expand="block">ver tabla</ion-button>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+{{mensaje}} -->
